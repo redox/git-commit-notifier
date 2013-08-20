@@ -119,6 +119,13 @@ class GitCommitNotifier::Emailer
     nil
   end
 
+  # Performs email delivery in html mode (to STDOUT).
+  # @return [NilClass] nil
+  def perform_delivery_html(content)
+    puts content
+    nil
+  end
+
   # Performs email delivery through SMTP.
   # @return [NilClass] nil
   def perform_delivery_smtp(content, smtp_settings)
@@ -239,6 +246,7 @@ class GitCommitNotifier::Emailer
     when :smtp then perform_delivery_smtp(content, config['smtp_server'])
     when :nntp then perform_delivery_nntp(content, config['nntp_settings'])
     when :debug then perform_delivery_debug(content)
+    when :html then perform_delivery_html(mail_html_message)
     else # sendmail
       perform_delivery_sendmail(content, config['sendmail_options'])
     end

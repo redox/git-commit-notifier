@@ -85,7 +85,7 @@ prefer_git_config_mailinglist: false
 # custom template file (embedded template/email.html.erb)
 # custom_template: /absolute/path/to/readable/email.html.erb
 
-# select the delivery method: smtp, nntp, sendmail, or debug
+# select the delivery method: smtp, nntp, sendmail, html or debug
 delivery_method: sendmail
 
 # Optionally group email by push: don't send an email for each commit when true.
