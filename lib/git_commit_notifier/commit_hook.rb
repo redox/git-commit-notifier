@@ -35,6 +35,15 @@ module GitCommitNotifier
         nil
       end
 
+      # Prints informational message to $stderr.
+      # @param [String] message Message to be printed to $stdout.
+      # @return [NilClass] nil
+      def debug(message)
+        $stderr.puts message
+        $stderr.flush
+        nil
+      end
+
       # Gets logger.
       def logger
         @logger ||= Logger.new(config)
@@ -183,7 +192,7 @@ module GitCommitNotifier
           :commit_count_phrase2 => nil
         }
 
-        info("Sending mail...")
+        debug("Sending mail...")
 
         diff2html = DiffToHtml.new(config)
         if config["group_email_by_push"]
